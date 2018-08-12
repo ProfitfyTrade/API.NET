@@ -21,10 +21,18 @@ namespace Manchester.Hall9001
         {
             _APPId = pAPPId;
             _APIKey = pAPIKey;
+            if (pEndPoint.Last() != '/')
+            {
+                pEndPoint += "/";
+            }
             _apiBaseAddress = pEndPoint;
         }
         public Hall9001(string pEndPoint)
         {
+            if(pEndPoint.Last() !='/')
+            {
+                pEndPoint += "/";
+            }
             _apiBaseAddress = pEndPoint;
         }
         public UserInfo UserInfo(out bool Sucess)
