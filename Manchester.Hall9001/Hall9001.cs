@@ -212,6 +212,7 @@ namespace Manchester.Hall9001
                 Console.WriteLine(responseString);
                 Console.WriteLine("Failed to call the API. HTTP Status: {0}, Reason {1}", response.StatusCode, response.ReasonPhrase);
                 Console.ResetColor();
+                Console.Beep(300, 1500);
             }
             HttpMethodResult ret = new HttpMethodResult()
             { 
@@ -239,8 +240,7 @@ namespace Manchester.Hall9001
                client = HttpClientFactory.Create();
                 apiAcessType = "api/v1/public/";
             }
-
-            string teste = _apiBaseAddress + apiAcessType + pEndPoint;
+                        
 
             HttpResponseMessage response = await client.PostAsJsonAsync(_apiBaseAddress + apiAcessType + pEndPoint, pBody);
 
@@ -260,6 +260,7 @@ namespace Manchester.Hall9001
                 Console.WriteLine(responseString);
                 Console.WriteLine("Failed to call the API. HTTP Status: {0}, Reason {1}", response.StatusCode, response.ReasonPhrase);
                 Console.ResetColor();
+                Console.Beep(300, 1500);
             }
 
             HttpMethodResult ret = new HttpMethodResult()
@@ -288,8 +289,6 @@ namespace Manchester.Hall9001
                 apiAcessType = "api/v1/public/";
             }
 
-            string teste = _apiBaseAddress + apiAcessType + pEndPoint;
-
             HttpResponseMessage response = await client.DeleteAsync(_apiBaseAddress + apiAcessType + pEndPoint);
 
             if (response.IsSuccessStatusCode)
@@ -305,10 +304,11 @@ namespace Manchester.Hall9001
             {
                 responseString = await response.Content.ReadAsStringAsync();
 
-                /*Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine(responseString);
                 Console.WriteLine("Failed to call the API. HTTP Status: {0}, Reason {1}", response.StatusCode, response.ReasonPhrase);
-                Console.ResetColor();*/
+                Console.ResetColor();
+                Console.Beep(300, 1500);
             }
 
             HttpMethodResult ret = new HttpMethodResult()
@@ -326,7 +326,7 @@ namespace Manchester.Hall9001
             string APPId;
             public CustomDelegatingHandler(string pAPIKey, string pAPPId)
             {
-                //Obtained from the server earlier, APIKey MUST be stored securly and in App.Config
+                //Obtained from the server earlier
                 APIKey = pAPIKey;
                 APPId = pAPPId;
             }
