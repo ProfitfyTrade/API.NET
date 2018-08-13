@@ -12,7 +12,7 @@ namespace Manchester.Hall9001.ConsoleApp
         {
             string APPID = "";
             string APIKey = "";
-            Hall9001 objHall9001 = new Hall9001("http://profitfy.trade/",APPID,APIKey);
+            Hall9001 objHall9001 = new Hall9001("https://profitfy.trade/",APPID,APIKey);
             bool Sucess;
             //Retorna os pares negociados na Profitfy
             var Markets = objHall9001.Markets(out Sucess);
