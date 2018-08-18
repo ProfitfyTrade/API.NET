@@ -84,6 +84,7 @@ namespace Manchester.Hall9001
             Sucess = HttpReturn.IsSuccessStatusCode;
             return objRet;
         }
+
         public Orders CreateOrderSell(string pCoinFrom, string pCointo, decimal pAmount, decimal pPrice, out bool Sucess)
         {
             OrdersParam pOrder = new OrdersParam()
@@ -128,6 +129,7 @@ namespace Manchester.Hall9001
             Sucess = HttpReturn.IsSuccessStatusCode;
             return objRet;
         }
+
         public Orders CreateOrderBuy(string pCoinFrom, string pCointo, decimal pAmount, decimal pPrice, out bool Sucess)
         {
             OrdersParam pOrder = new OrdersParam()
@@ -164,6 +166,33 @@ namespace Manchester.Hall9001
             List<Orders> objRet = new List<Orders>();
 
             var HttpReturn = Delete(true, "orders/buy/" + pId.ToString()).Result;
+
+            if (HttpReturn.IsSuccessStatusCode)
+            {
+                objRet = JsonConvert.DeserializeObject<List<Orders>>(HttpReturn.Data);
+            }
+            Sucess = HttpReturn.IsSuccessStatusCode;
+            return objRet;
+        }
+
+        public List<Orders> GetOrderAll(long? pId, out bool Sucess)
+        {
+            List<Orders> objRet = new List<Orders>();
+
+            var HttpReturn = Get(true, "orders/all/" + pId.ToString()).Result;
+
+            if (HttpReturn.IsSuccessStatusCode)
+            {
+                objRet = JsonConvert.DeserializeObject<List<Orders>>(HttpReturn.Data);
+            }
+            Sucess = HttpReturn.IsSuccessStatusCode;
+            return objRet;
+        }
+        public List<Orders> DeleteOrderAll(long? pId, out bool Sucess)
+        {
+            List<Orders> objRet = new List<Orders>();
+
+            var HttpReturn = Delete(true, "orders/all/" + pId.ToString()).Result;
 
             if (HttpReturn.IsSuccessStatusCode)
             {
