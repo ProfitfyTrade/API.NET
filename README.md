@@ -14,3 +14,6 @@ Consumo das APIs da Profitfy.trade
 * CreateOrderBuy
 * GetOrderBuy
 * DeleteOrderBuy
+
+* GetOrderAll
+* DeleteOrderAll
